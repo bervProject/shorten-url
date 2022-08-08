@@ -3,10 +3,12 @@ using Auth0.AspNetCore.Authentication;
 
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ShortenUrl.Pages;
+
+[Authorize]
 public class LogoutModel : PageModel
 {
     public async Task OnGetAsync()
