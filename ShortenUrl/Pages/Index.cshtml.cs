@@ -5,6 +5,7 @@ using Redis.OM;
 using Redis.OM.Searching;
 
 using ShortenUrl.Models;
+using ShortenUrl.Utils;
 
 namespace ShortenUrl.Pages;
 
@@ -32,10 +33,10 @@ public class IndexModel : PageModel
         {
             return Page();
         }
-        var userData = User.Claims.Where(x => x.Type.Equals("email", StringComparison.OrdinalIgnoreCase) || x.Type.Contains("email", StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
-        if (userData != null)
+        var userEmail = ClaimUtils.GetEmail(User.Claims);
+        if (userEmail != null)
         {
-            PostUrl.CreatedBy = userData.Value;
+            PostUrl.CreatedBy = userEmail;
         }
         _urlsRepo.Insert(PostUrl);
         await _urlsRepo.SaveAsync();

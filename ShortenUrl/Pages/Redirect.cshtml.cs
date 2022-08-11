@@ -21,7 +21,14 @@ namespace ShortenUrl.Pages
         public IActionResult OnGet(string url)
         {
             var existing = _urlsRepo.Where(x => x.ShortenUrl == url).FirstOrDefault();
-            return existing == null ? Redirect("/") : (IActionResult)Redirect(existing.OriginalUrl);
+            if (existing == null)
+            {
+                return Redirect("/");
+            }
+            existing.VisitedCounter += 1;
+            _urlsRepo.Update(existing);
+            _urlsRepo.Save();
+            return Redirect(existing.OriginalUrl);
         }
     }
 }

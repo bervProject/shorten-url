@@ -23,7 +23,6 @@ public class IndexCreationService : IHostedService
         _logger.LogDebug("Create Index {}", typeof(Urls));
         var result = await _provider.Connection.CreateIndexAsync(typeof(Urls));
         _logger.LogDebug("Create Index {} Result: {}", typeof(Urls), result);
-
     }
 
     public Task StopAsync(CancellationToken cancellationToken)

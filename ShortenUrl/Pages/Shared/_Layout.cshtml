@@ -28,6 +28,7 @@
                         @if (User.Identity != null && User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item"><a class="nav-link text-dark">@User.Identity.Name</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-page="MyUrl">My URLs</a></li>
                             <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-page="/Logout">Logout</a></li>
                         }
                         else
