@@ -9,6 +9,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-20.04
+    services:
+      redis:
+        image: redis/redis-stack-server:6.2.2-v5
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-dotnet@v2
