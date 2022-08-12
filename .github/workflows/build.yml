@@ -1,0 +1,62 @@
+name: Build
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    services:
+      redis:
+        image: redis/redis-stack-server:6.2.2-v5
+        ports:
+          - 6379:6379
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '6.0.x'
+        include-prerelease: true
+    - run: dotnet build
+    - run: dotnet test
+  build_docker:
+    runs-on: ubuntu-20.04
+    if: ${{ github.event_name == 'pull_request' }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Docker Build
+        run: docker build . -t shorten-url
+  build-and-push-image:
+    runs-on: ubuntu-20.04
+    if: ${{ github.event_name == 'push' }}
+    env:
+      REGISTRY: ghcr.io
+      IMAGE_NAME: ${{ github.repository }}
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}

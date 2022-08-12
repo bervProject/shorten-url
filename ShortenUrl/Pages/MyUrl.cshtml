@@ -1,0 +1,16 @@
+﻿@page
+@model ShortenUrl.Pages.MyUrlModel
+@{
+}
+
+
+@foreach (var url in Model.URLs)
+{
+    <div class="card">
+        <div class="card-body">
+            <p><span>@url.ShortenUrl</span> <span>@url.OriginalUrl</span></p>
+            <p>Visited: @url.VisitedCounter</p>
+            <a class="btn btn-primary" asp-area="" asp-route-url="@url.ShortenUrl" asp-page="/Redirect">Visit</a>
+        </div>
+    </div>
+}
