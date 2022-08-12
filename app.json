@@ -6,5 +6,25 @@
     "dotnet",
     "webapp",
     "shorten"
+  ],
+  "env": {
+    "RedisConnectionString": {
+      "description": "Redis URL",
+      "value": "redis://examplehost"
+    },
+    "Auth0__Domain": {
+      "description": "Your Auth0 Domain",
+      "value": "example.auth0.com"
+    },
+    "Auth0__ClientId": {
+      "description": "Your Auth0 ClientId",
+      "value": "exampleclientid"
+    }
+  },
+  "stack": "heroku-22",
+  "buildpacks": [
+    {
+      "url": "jincod/dotnetcore"
+    }
   ]
 }
