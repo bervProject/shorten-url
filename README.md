@@ -42,13 +42,9 @@ Refer to [this example](https://github.com/redis-developer/basic-analytics-dashb
 
 To make deploys work, you need to create free account on [Redis Cloud](https://redis.info/try-free-dev-to)
 
-### Google Cloud Run
-
-[Insert Run on Google button](https://cloud.google.com/blog/products/serverless/introducing-cloud-run-button-click-to-deploy-your-git-repos-to-google-cloud)
-
 ### Heroku
 
-[Insert Deploy on Heroku button](https://devcenter.heroku.com/articles/heroku-button)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/bervProject/shorten-url)
 
 ### Netlify
 
