@@ -1,0 +1,10 @@
+{
+  "name": "Shorten URL Web Application",
+  "description": "Shorten URL Web Application",
+  "repository": "https://github.com/bervProject/shorten-url",
+  "keywords": [
+    "dotnet",
+    "webapp",
+    "shorten"
+  ]
+}

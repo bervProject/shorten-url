@@ -48,7 +48,7 @@ To make deploys work, you need to create free account on [Redis Cloud](https://r
 
 ### Heroku
 
-[Insert Deploy on Heroku button](https://devcenter.heroku.com/articles/heroku-button)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ### Netlify
 
