@@ -59,7 +59,8 @@ N/A
 
 0. Clone the project
 1. Restore/Install Dependencies. `dotnet restore`.
-2. Now your project is ready!
+2. Setup the environment example: `export RedisConnectionString=...` or update section `RedisConnectionString` of `ShortenUrl/appsettings.json`.
+3. Now your project is ready!
 
 ## Deployment
 
