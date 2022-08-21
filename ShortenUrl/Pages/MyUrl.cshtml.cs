@@ -1,6 +1,7 @@
 namespace ShortenUrl.Pages;
 
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 using Redis.OM;
@@ -23,5 +24,16 @@ public class MyUrlModel : PageModel
         var userEmail = ClaimUtils.GetEmail(User.Claims);
         URLs = _redisCollection.Where(x => x.CreatedBy == userEmail).ToList();
     }
-}
 
+    public async Task<IActionResult> OnPostDeleteAsync(string id)
+    {
+        var url = await _redisCollection.FindByIdAsync(id);
+        if (url == null)
+        {
+            return NotFound();
+        }
+        await _redisCollection.DeleteAsync(url);
+        await _redisCollection.SaveAsync();
+        return RedirectToPage("MyUrl");
+    }
+}

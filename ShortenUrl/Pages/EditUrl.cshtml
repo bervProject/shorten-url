@@ -1,0 +1,27 @@
+@page "{id}"
+@model EditUrlModel
+@{
+  ViewData["Title"] = "Edit URL page";
+}
+
+<h1>Edit URL</h1>
+
+<div class="card">
+  <div class="card-body">
+    <form method="post">
+      <input type="hidden" asp-for="PostUrl!.Id" />
+      <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+      <div class="form-group">
+        <label class="form-label" asp-for="PostUrl!.OriginalUrl"></label>
+        <input class="form-control" asp-for="PostUrl!.OriginalUrl" />
+        <span asp-validation-for="PostUrl!.OriginalUrl" class="text-danger"></span>
+      </div>
+      <div class="form-group">
+        <label asp-for="PostUrl!.ShortenUrl" class="form-label"></label>
+        <input class="form-control" asp-for="PostUrl!.ShortenUrl" />
+        <span asp-validation-for="PostUrl!.ShortenUrl" class="text-danger"></span>
+      </div>
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+  </div>
+</div>

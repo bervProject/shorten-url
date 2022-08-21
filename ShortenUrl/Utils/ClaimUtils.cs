@@ -7,4 +7,3 @@ public static class ClaimUtils
         return emailClaims?.Value;
     }
 }
-

@@ -3,14 +3,26 @@
 @{
 }
 
-
-@foreach (var url in Model.URLs)
-{
-    <div class="card">
-        <div class="card-body">
-            <p><span>@url.ShortenUrl</span> <span>@url.OriginalUrl</span></p>
-            <p>Visited: @url.VisitedCounter</p>
-            <a class="btn btn-primary" asp-area="" asp-route-url="@url.ShortenUrl" asp-page="/Redirect">Visit</a>
-        </div>
+<div class="container">
+    <div class="row gy-3">
+        @foreach (var url in Model.URLs)
+        {
+            <div class="col-6">
+                <form method="post">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2>Shorten URL: @url.ShortenUrl</h2>
+                            <p>Original URL: <a href="@url.OriginalUrl">@url.OriginalUrl</a></p>
+                            <p>Visited: @url.VisitedCounter</p>
+                            <a class="btn btn-primary" asp-area="" asp-route-url="@url.ShortenUrl"
+                            asp-page="/Redirect">Visit</a>
+                            <a class="btn btn-secondary" asp-area="" asp-route-id="@url.Id" asp-page="/EditUrl">Edit URL</a>
+                            <button class="btn btn-danger" type="submit" asp-route-id="@url.Id"
+                            asp-page-handler="Delete">Delete</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        }
     </div>
-}
+</div>

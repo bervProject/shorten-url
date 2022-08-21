@@ -9,7 +9,9 @@ namespace ShortenUrl.Models;
 [Document(StorageType = StorageType.Json, IndexName = "Urls")]
 public class Urls
 {
-    [RedisIdField] public Ulid Id { get; set; }
+    [RedisIdField]
+    [Indexed]
+    public Ulid Id { get; set; }
     [Indexed]
     [Display(Name = "Shorten URL")]
     [StringLength(60, MinimumLength = 5)]

@@ -17,4 +17,3 @@ public class ValidUrlAttribute : ValidationAttribute
         return isValid && resultUrl != null && (resultUrl.Scheme == Uri.UriSchemeHttp || resultUrl.Scheme == Uri.UriSchemeHttps);
     }
 }
-
