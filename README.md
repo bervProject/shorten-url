@@ -1,8 +1,25 @@
-# [Insert your hackathon title or the app's title (keep it short)]
+# Simple Shorten URL using Redis and Auth0
 
-[Insert description of app]
+Simple App for Shorten your URL and using Redis as the main databases.
 
-[Insert app screenshots](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#uploading-assets)
+## Screenshots
+
+* Non Login - Home Page
+
+![non login - home page](https://user-images.githubusercontent.com/15927349/185797075-40fb4fa9-b928-417c-8886-eb4134afc564.png)
+
+* Login - Home Page
+
+![login - home page](https://user-images.githubusercontent.com/15927349/185797124-65df6999-ecd4-4889-a93e-66f21e0354a0.png)
+
+* URL List - By Users
+
+![url list](https://user-images.githubusercontent.com/15927349/185799021-c377edcb-8fd4-4290-be83-0ac447f3480d.png)
+
+* Edit URL
+
+![edit](https://user-images.githubusercontent.com/15927349/185799033-91b860a7-890d-41ab-aa16-e4c554f7b127.png)
+
 
 # Overview video (Optional)
 
@@ -24,19 +41,25 @@ Refer to [this example](https://github.com/redis-developer/basic-analytics-dashb
 
 ### Performance Benchmarks
 
-[If you migrated an existing app to use Redis, please put performance benchmarks here to show the performance improvements.]
+N/A
 
 ## How to run it locally?
 
-[Make sure you test this with a fresh clone of your repo, these instructions will be used to judge your app.]
+1. Run using `dotnet run --project ShortenUrl`
+2. Access the web using the link from the console output. As example, please see the picture below.
+
+![local url](https://user-images.githubusercontent.com/15927349/185796855-530543e0-c4ca-47e3-afba-11b6119324d0.png)
 
 ### Prerequisites
 
-[Fill out with any prerequisites (e.g. Node, Docker, etc.). Specify minimum versions]
+1. [.NET 6](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+2. Docker (Optional)
 
 ### Local installation
 
-[Insert instructions for local installation]
+0. Clone the project
+1. Restore/Install Dependencies. `dotnet restore`.
+2. Now your project is ready!
 
 ## Deployment
 
@@ -45,14 +68,6 @@ To make deploys work, you need to create free account on [Redis Cloud](https://r
 ### Heroku
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/bervProject/shorten-url)
-
-### Netlify
-
-[Insert Deploy on Netlify button](https://www.netlify.com/blog/2016/11/29/introducing-the-deploy-to-netlify-button/)
-
-### Vercel
-
-[Insert Deploy on Vercel button](https://vercel.com/docs/deploy-button)
 
 ## More Information about Redis Stack
 
