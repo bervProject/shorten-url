@@ -33,11 +33,35 @@ Here's a short video that explains the project and how it uses Redis:
 
 ### How the data is stored:
 
-Refer to [this example](https://github.com/redis-developer/basic-analytics-dashboard-redis-bitmaps-nodejs#how-the-data-is-stored) for a more detailed example of what you need for this section.
+The data is stored as JSON values and only has a single structure.
+
+* Each JSON values have properties:
+
+  * Id : Generated id, used for the key too.
+  * ShortenUrl: The shorten URL, will be used to find the original URL. (Indexed)
+  * OriginalUrl: The original URL, will be used to redirect the pages.
+  * CreatedBy: To know the creator, will allow editing for entries that are created by authenticated users. (Indexed)
+  * VisitedCounter: To know how many "clicks" or visited the shortened url.
+
+The key is generated `ShortenUrl.Models.Urls:{urlId}`.
+
+![keys](https://user-images.githubusercontent.com/15927349/187076057-a58836d6-fc2a-4f90-96db-7bb55151829f.png)
+
+Also generate index `"FT.CREATE" "Urls" "ON" "Json" "PREFIX" "1" "ShortenUrl.Models.Urls:" "SCHEMA" "$.Id" "AS" "Id" "TAG" "SEPARATOR" "|" "$.ShortenUrl" "AS" "ShortenUrl" "TAG" "SEPARATOR" "|" "$.CreatedBy" "AS" "CreatedBy" "TAG" "SEPARATOR" "|" "$.VisitedCounter" "AS" "VisitedCounter" "NUMERIC" "SORTABLE"`
 
 ### How the data is accessed:
 
 Refer to [this example](https://github.com/redis-developer/basic-analytics-dashboard-redis-bitmaps-nodejs#how-the-data-is-accessed) for a more detailed example of what you need for this section.
+
+* MyURL list (search using index). `FT.SEARCH Urls (@CreatedBy:{username/email}) LIMIT 0 100`
+  * Example: `"FT.SEARCH" "Urls" "(@CreatedBy:{bervianto\\.leo\\@gmail\\.com})" "LIMIT" "0" "100"`
+
+* Validate url uniques/find the shortened url. `FT.SEARCH Urls (@ShortenUrl:{shortened-url}) LIMIT 0 100`
+  * Example: `"FT.SEARCH" "Urls" "(@ShortenUrl:{okeoke})" "LIMIT" "0" "1"`
+
+* Store the JSON value.
+
+  * Example: `"JSON.SET" "ShortenUrl.Models.Urls:01GBJAJ5CQMZRFC6D2MZQ3QBAD" "." "{"Id":"01GBJAJ5CQMZRFC6D2MZQ3QBAD","ShortenUrl":"okeoke","OriginalUrl":"https://google.com","CreatedBy":"bervianto.leo@gmail.com","VisitedCounter":0}"`
 
 ### Performance Benchmarks
 
