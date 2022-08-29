@@ -21,7 +21,7 @@ Simple App for Shorten your URL and using Redis as the main databases.
 ![edit](https://user-images.githubusercontent.com/15927349/185799033-91b860a7-890d-41ab-aa16-e4c554f7b127.png)
 
 
-# Overview video (Optional)
+# Overview video
 
 Here's a short video that explains the project and how it uses Redis:
 
