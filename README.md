@@ -25,9 +25,7 @@ Simple App for Shorten your URL and using Redis as the main databases.
 
 Here's a short video that explains the project and how it uses Redis:
 
-[Insert your own video here, and remove the one below]
-
-[![Embed your YouTube video](https://i.ytimg.com/vi/vyxdC1qK4NE/maxresdefault.jpg)](https://www.youtube.com/watch?v=vyxdC1qK4NE)
+[![short video](https://i.ytimg.com/vi/BAVv3r51VKA/maxresdefault.jpg)](https://youtu.be/BAVv3r51VKA)
 
 ## How it works
 
