@@ -22,7 +22,7 @@ public class MyUrlModel : PageModel
     public void OnGet()
     {
         var userEmail = ClaimUtils.GetEmail(User.Claims);
-        URLs = _redisCollection.Where(x => x.CreatedBy == userEmail).ToList();
+        URLs = _redisCollection.Where(x => x.CreatedBy == userEmail).OrderByDescending(x => x.VisitedCounter).ToList();
     }
 
     public async Task<IActionResult> OnPostDeleteAsync(string id)
