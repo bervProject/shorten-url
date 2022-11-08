@@ -21,8 +21,11 @@ public class IndexCreationService : IHostedService
     public async Task StartAsync(CancellationToken cancellationToken)
     {
         _logger.LogDebug("Create Index {}", typeof(Urls));
-        var result = await _provider.Connection.CreateIndexAsync(typeof(Urls));
-        _logger.LogDebug("Create Index {} Result: {}", typeof(Urls), result);
+        var resultDrop = await _provider.Connection.DropIndexAsync(typeof(Urls));
+        _logger.LogDebug("Drop Index {} Result: {}", typeof(Urls), resultDrop);
+        var resultCreate = await _provider.Connection.CreateIndexAsync(typeof(Urls));
+        _logger.LogDebug("Create Index {} Result: {}", typeof(Urls), resultCreate);
+
     }
 
     public Task StopAsync(CancellationToken cancellationToken)
