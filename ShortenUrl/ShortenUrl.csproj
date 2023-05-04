@@ -9,7 +9,7 @@
     <ItemGroup>
         <InternalsVisibleTo Include="ShortenUrl.Test" />
         <PackageReference Include="Auth0.AspNetCore.Authentication" Version="1.2.0" />
-        <PackageReference Include="Redis.OM" Version="0.5.0" />
+        <PackageReference Include="Redis.OM" Version="0.5.1" />
     </ItemGroup>
 
 </Project>
