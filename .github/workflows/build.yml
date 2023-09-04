@@ -15,7 +15,7 @@ jobs:
         ports:
           - 6379:6379
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: actions/setup-dotnet@v3.2.0
       with:
         dotnet-version: '7.0.x'
@@ -27,7 +27,7 @@ jobs:
     if: ${{ github.event_name == 'pull_request' }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Docker Build
         run: docker build . -t shorten-url
   build-and-push-image:
@@ -41,7 +41,7 @@ jobs:
       packages: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
