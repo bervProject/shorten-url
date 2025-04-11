@@ -8,22 +8,21 @@ on:
       - main
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     services:
       redis:
-        image: redis/redis-stack-server:6.2.2-v5
+        image: redis/redis-stack-server:6.2.6-v19
         ports:
           - 6379:6379
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-dotnet@v4.3.1
       with:
-        dotnet-version: '7.0.x'
-        dotnet-quality: 'preview'
+        dotnet-version: '8.0.x'
     - run: dotnet build
     - run: dotnet test
   build_docker:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     if: ${{ github.event_name == 'pull_request' }}
     steps:
       - name: Checkout repository
@@ -31,7 +30,7 @@ jobs:
       - name: Docker Build
         run: docker build . -t shorten-url
   build-and-push-image:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     if: ${{ github.event_name == 'push' }}
     env:
       REGISTRY: ghcr.io
