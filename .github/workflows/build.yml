@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-24.04
     services:
       redis:
-        image: redis/redis-stack-server:7.2.0-v15
+        image: redis/redis-stack-server:7.4.0-v3
         ports:
           - 6379:6379
     steps:
