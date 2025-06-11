@@ -3,7 +3,7 @@ WORKDIR /app
 COPY ShortenUrl ./
 RUN dotnet publish -o published
 
-FROM mcr.microsoft.com/dotnet/aspnet:9.0.5 as runtime
+FROM mcr.microsoft.com/dotnet/aspnet:9.0.6 as runtime
 WORKDIR /app
 COPY --from=build /app/published .
 CMD [ "dotnet", "ShortenUrl.dll" ]
