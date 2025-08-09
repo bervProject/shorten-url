@@ -1,0 +1,30 @@
+@page "/Stats"
+@model StatsModel
+@{
+    ViewData["Title"] = "Stats";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title">Statistics</h1>
+        <p class="card-text">Total URLs shortened: @Model.TotalCreatedLink</p>
+        <h2>Top 10 URLs by the most visited URL</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Short URL</th>
+                    <th scope="col">Counts</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var url in Model.MostVisitedUrls)
+                {
+                    <tr>
+                        <td>@url.ShortenUrl</td>
+                        <td>@url.VisitedCounter</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

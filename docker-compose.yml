@@ -1,0 +1,12 @@
+services:
+  url:
+    image: bervproject/shorten-url:latest
+    build: .
+    environment:
+      - RedisConnectionString=redis://redis
+    ports:
+      - 8080:8080
+  redis:
+    image: redis:8-alpine
+    ports:
+      - 6379:6379

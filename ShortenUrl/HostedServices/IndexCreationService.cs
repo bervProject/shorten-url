@@ -20,15 +20,22 @@ public class IndexCreationService : IHostedService
 
     public async Task StartAsync(CancellationToken cancellationToken)
     {
-        if (!_provider.Connection.IsIndexCurrent(typeof(Urls)))
-{
-        _logger.LogDebug("Creating Index {}", typeof(Urls));
-        var resultDrop = await _provider.Connection.DropIndexAsync(typeof(Urls));
-        _logger.LogDebug("Drop Index {} Result: {}", typeof(Urls), resultDrop);
-        var resultCreate = await _provider.Connection.CreateIndexAsync(typeof(Urls));
-        _logger.LogDebug("Create Index {} Result: {}", typeof(Urls), resultCreate);
-}
-        
+        try
+        {
+            _provider.Connection.GetIndexInfo(typeof(Urls));
+
+            if (!_provider.Connection.IsIndexCurrent(typeof(Urls)))
+            {
+                await _provider.Connection.DropIndexAsync(typeof(Urls));
+                await _provider.Connection.CreateIndexAsync(typeof(Urls));
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error creating or updating index for Urls");
+            await _provider.Connection.CreateIndexAsync(typeof(Urls));
+        }
+
 
     }
 

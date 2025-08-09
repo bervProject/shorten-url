@@ -11,14 +11,14 @@ jobs:
     runs-on: ubuntu-24.04
     services:
       redis:
-        image: redis/redis-stack-server:7.4.0-v3
+        image: redis:8-alpine
         ports:
           - 6379:6379
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-dotnet@v4.3.1
       with:
-        dotnet-version: '8.0.x'
+        dotnet-version: '9.0.x'
     - run: dotnet build
     - run: dotnet test
   build_docker:

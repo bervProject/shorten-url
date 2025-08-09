@@ -23,6 +23,10 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Stats">Statistics</a>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
                         @if (User.Identity != null && User.Identity.IsAuthenticated)
@@ -48,7 +52,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - ShortenUrl - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2025 - ShortenUrl - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
 
