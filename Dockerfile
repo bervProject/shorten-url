@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:9.0-alpine as build
+FROM mcr.microsoft.com/dotnet/sdk:10.0-alpine as build
 WORKDIR /app
 COPY ShortenUrl ./
 RUN dotnet publish -o published
